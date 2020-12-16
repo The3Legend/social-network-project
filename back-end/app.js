@@ -12,7 +12,7 @@ const authRoutes = require("./routes/auth");
 const app = express();
 
 //Рейеструємо роут з папки routes
-
+app.use(express.json({extended:true}))
 mongoose
   .connect(keys.mongoURI, {
     useNewUrlParser: true,

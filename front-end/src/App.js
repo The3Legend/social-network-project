@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { RoutesUse } from "./routes";
 
 function App() {
-  const routes = RoutesUse(true);
+  const routes = RoutesUse(false);
   return (
     <Router>
       <div className="container">{routes}</div>;

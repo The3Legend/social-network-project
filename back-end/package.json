@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index",
     "server": "nodemon index",
-    "client":"cd ..&& cd front-end && npm start"
+    "client": "cd ..&& cd front-end && npm start"
   },
   "keywords": [
     "express",
@@ -25,7 +25,9 @@
     "mongoose": "^5.11.7",
     "morgan": "^1.10.0",
     "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0"
+    "passport-jwt": "^4.0.0",
+    "react": "0.0.0-8e5adfbd7",
+    "react-dom": "0.0.0-8e5adfbd7"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

@@ -59,15 +59,15 @@ module.exports.register = async function (req, res) {
   const { email, nickName, password } = req.body;
   const candidate = await User.findOne({ email: email });
   let inaccessibleUserName = await User.findOne({
-    nickName: nickName
+    nickName: nickName,
   });
   if (inaccessibleUserName) return res.send("this user name is already in use");
 
-  if (candidate ) {
+  if (candidate) {
     // Пользователь существує треба вернути ошибку
     res.status(409).json({
       message: "Такой имейл уже занят.Попробуйте другой",
-    })
+    });
   } else {
     // Створюємо пользователя
     const salt = bcrypt.genSaltSync(10);
