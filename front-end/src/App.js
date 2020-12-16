@@ -1,9 +1,13 @@
 import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
+import { RoutesUse } from "./routes";
+
 function App() {
+  const routes = RoutesUse(true);
   return (
-    <div className="container">
-      <h1>Hello</h1>
-    </div>
+    <Router>
+      <div className="container">{routes}</div>;
+    </Router>
   );
 }
 export default App;
