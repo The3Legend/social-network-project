@@ -1,20 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHttp } from "../hooks/http.hook";
+import { useMassage } from "../hooks/massage.hook";
+import toast  from "toastr";
 
 export const AuthPage = () => {
-  const {loading, request, error, clearError} = useHttp()
+  const message = useMassage();
+  const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({
-    email: '', password: '',nickName:''
-  })
-  const changeHandler = event => {
-    setForm({ ...form, [event.target.name]: event.target.value })
-  }
+    email: "",
+    password: "",
+    nickName: "",
+  });
+
+  useEffect(() => {
+    message(error);
+    clearError();
+  }, [error, message, clearError]);
+  const changeHandler = (event) => {
+    setForm({ ...form, [event.target.name]: event.target.value });
+  };
   const registerHandler = async () => {
     try {
-      const data = await request('/api/auth/register', 'POST', {...form})
-      console.log(data)
+      const data = await request("/api/auth/register", "POST", { ...form });
+      toast.options.positionClass = "toast-top-right";
+      toast.options.progressBar = true;
+      toast.success(data.message);
     } catch (e) {}
-  }
+  };
 
   return (
     <div className="row mt-4">
