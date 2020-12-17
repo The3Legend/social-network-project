@@ -11,7 +11,7 @@ module.exports.login = async function (req, res) {
   if (!errors.isEmpty()) {
     return res.status(400).json({
       errors: errors.array(),
-      massage: "Некоректні дані для реєстрації",
+      message: "Некоректні дані для реєстрації",
     });
   }
   const { email, password } = req.body;
@@ -36,13 +36,13 @@ module.exports.login = async function (req, res) {
     } else {
       // Пароли не совпали
       res.status(401).json({
-        massage: "Пароли не совпадают,попробуйте снова",
+        message: "Пароли не совпадают,попробуйте снова",
       });
     }
   } else {
     // Пользователя нет,Ошибка
     res.status(404).json({
-      massage: "Пользователь с таким імейл не найдень",
+      message: "Пользователь с таким імейл не найдень",
     });
   }
 };
@@ -53,7 +53,7 @@ module.exports.register = async function (req, res) {
   if (!errors.isEmpty()) {
     return res.status(400).json({
       errors: errors.array(),
-      massage: "Некоректні дані для реєстрації",
+      message: "Некоректні дані для реєстрації",
     });
   }
   const { email, nickName, password } = req.body;
@@ -61,7 +61,10 @@ module.exports.register = async function (req, res) {
   let inaccessibleUserName = await User.findOne({
     nickName: nickName,
   });
-  if (inaccessibleUserName) return res.send("this user name is already in use");
+  if (inaccessibleUserName)
+    return res
+      .status(409)
+      .json({ message: "Ваш nickName уже занят попробуйте другой" });
 
   if (candidate) {
     // Пользователь существує треба вернути ошибку
@@ -79,7 +82,7 @@ module.exports.register = async function (req, res) {
 
     try {
       await user.save();
-      res.status(201).json({ user });
+      res.status(201).json({ message: "Пользователь создан", user });
     } catch (e) {
       // Обработать ошибку
       errorHendler(res, e);
