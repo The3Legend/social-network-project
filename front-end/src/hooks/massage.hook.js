@@ -6,7 +6,7 @@ export const useMassage = () => {
     if (text) {
       toast.options.positionClass = "toast-top-right";
       toast.options.progressBar = true;
-      toast.options.timeOut = 3000;
+      toast.options.timeOut = 5000;
       toast.error(text);
     }
   }, []);

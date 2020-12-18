@@ -18,6 +18,7 @@ export const AuthPage = () => {
     message(error);
     clearError();
   }, [error, message, clearError]);
+
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
@@ -35,6 +36,7 @@ export const AuthPage = () => {
       auth.login(data.token, data.userId);
       toast.options.positionClass = "toast-top-right";
       toast.options.progressBar = true;
+      toast.options.timeOut = 1000;
       toast.success(data.message);
     } catch (e) {}
   };
@@ -44,7 +46,7 @@ export const AuthPage = () => {
       <div className="col-4 mx-auto">
         <div className="card">
           <article className="card-body">
-            <h4 className="card-title text-center mb-4 mt-1">Registration</h4>
+            <h4 className="card-title text-center mb-4 mt-1">Login/Registration</h4>
             <div className="form-group">
               <div className="input-group">
                 <div className="input-group-prepend">
