@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useHttp } from "../hooks/http.hook";
 import { useMassage } from "../hooks/massage.hook";
-import toast  from "toastr";
+import { AuthContext } from "../context/AuthContext";
+import toast from "toastr";
 
 export const AuthPage = () => {
+  const auth = useContext(AuthContext);
   const message = useMassage();
   const { loading, request, error, clearError } = useHttp();
   const [form, setForm] = useState({
@@ -22,6 +24,15 @@ export const AuthPage = () => {
   const registerHandler = async () => {
     try {
       const data = await request("/api/auth/register", "POST", { ...form });
+      toast.options.positionClass = "toast-top-right";
+      toast.options.progressBar = true;
+      toast.success(data.message);
+    } catch (e) {}
+  };
+  const loginHandler = async () => {
+    try {
+      const data = await request("/api/auth/login", "POST", { ...form });
+      auth.login(data.token, data.userId);
       toast.options.positionClass = "toast-top-right";
       toast.options.progressBar = true;
       toast.success(data.message);
@@ -86,7 +97,11 @@ export const AuthPage = () => {
               </div>
             </div>
             <div className="form-group d-flex justify-content-between">
-              <button className="btn btn-outline-success" disabled={loading}>
+              <button
+                className="btn btn-outline-success"
+                onClick={loginHandler}
+                disabled={loading}
+              >
                 Login
               </button>
               <button
