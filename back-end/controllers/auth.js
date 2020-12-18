@@ -32,6 +32,8 @@ module.exports.login = async function (req, res) {
       );
       res.status(200).json({
         token: `Bearer ${token}`,
+        userId:`User ${candidate.id}`,
+        message: "Ви успішно увійшли в систему",
       });
     } else {
       // Пароли не совпали
