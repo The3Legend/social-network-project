@@ -39,6 +39,7 @@ export const AuthPage = () => {
       toast.options.timeOut = 1000;
       toast.success(data.message);
     } catch (e) {}
+
   };
 
   return (
@@ -61,6 +62,7 @@ export const AuthPage = () => {
                   id="nickName"
                   name="nickName"
                   onChange={changeHandler}
+                  
                 />
               </div>
             </div>

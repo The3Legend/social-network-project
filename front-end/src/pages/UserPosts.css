@@ -1,0 +1,10 @@
+.buttons{
+ width: 100%;
+
+}
+.width{
+  width: 4%;
+  min-width: 3%;
+  margin: 2px;
+  height: 100%;
+}
