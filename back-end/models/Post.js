@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
 let postSchema = mongoose.Schema({
-  title: {
-    type: String,
-    required: true,
-  },
   text: {
     type: String,
     required: true,
@@ -13,9 +9,11 @@ let postSchema = mongoose.Schema({
     default: Date.now,
   },
   user: {
-    ref: "user",
     type: mongoose.Schema.Types.ObjectId,
+    ref: "user",
+
   },
+  nickName: String,
   comments: [
     {
       user: {
@@ -32,7 +30,6 @@ let postSchema = mongoose.Schema({
         type: Date,
         default: Date.now,
       },
-      
     },
   ],
 });

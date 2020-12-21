@@ -7,6 +7,11 @@ router.get(
   passport.authenticate("jwt", { session: false }),
   controller.getAll
 );
+router.get(
+  "/singlPost",
+  passport.authenticate("jwt", { session: false }),
+  controller.singlPost
+);
 router.post(
   "/",
   passport.authenticate("jwt", { session: false }),

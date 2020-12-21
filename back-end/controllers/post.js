@@ -11,13 +11,23 @@ module.exports.getAll = async function (req, res) {
     errorHendler(res, e);
   }
 };
+module.exports.singlPost = async function (req, res) {
+  try {
+    let posts = await Post.find({user:req.user.id});
+    res.json(posts);
+  } catch (e) {
+    errorHendler(res, e);
+  }
+};
 module.exports.create = async function (req, res) {
   const { title, text } = req.body;
   try {
+    let user = await User.findById(req.user.id);
     const newPost = await new Post({
       title: title,
       text: text,
       user: req.user.id,
+      nickName:user.nickName
     }).save();
     res.status(201).json(newPost);
   } catch (e) {
