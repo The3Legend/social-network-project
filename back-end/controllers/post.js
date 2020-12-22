@@ -5,7 +5,6 @@ const errorHendler = require("../utils/errorHendler");
 module.exports.getAll = async function (req, res) {
   try {
     let posts = await Post.find();
-
     res.json(posts);
   } catch (e) {
     errorHendler(res, e);
@@ -13,7 +12,7 @@ module.exports.getAll = async function (req, res) {
 };
 module.exports.singlPost = async function (req, res) {
   try {
-    let posts = await Post.find({user:req.user.id});
+    let posts = await Post.find({ user: req.user.id });
     res.json(posts);
   } catch (e) {
     errorHendler(res, e);
@@ -27,7 +26,8 @@ module.exports.create = async function (req, res) {
       title: title,
       text: text,
       user: req.user.id,
-      nickName:user.nickName
+      nickName: user.nickName,
+      email:user.email
     }).save();
     res.status(201).json(newPost);
   } catch (e) {

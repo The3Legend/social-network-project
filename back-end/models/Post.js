@@ -11,9 +11,13 @@ let postSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "user",
-
   },
-  nickName: String,
+  nickName: {
+    type: String,
+  },
+  email: {
+    type: String,
+  },
   comments: [
     {
       user: {
