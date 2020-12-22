@@ -1,8 +1,48 @@
-
 .input-group-text {
   width: 37px;
 }
-button{
+button {
   width: 45%;
 }
+.card-text {
+  font-family: "Noto Sans JP", sans-serif;
+}
+.navbar-nav {
+  font-family: "Noto Sans JP", sans-serif;
+}
+.size {
+  text-align: center;
+  font-family: "Noto Sans JP", sans-serif;
+}
+.buttons {
+  width: 100%;
+}
+.width {
+  width: 4%;
+  min-width: 3%;
+  margin: 2px;
+  height: 100%;
+}
 
+.card-style {
+  height: 50%;
+  margin-left: 20px;
+  margin-top: 46px;
+}
+.container-card {
+  border: 2px solid #ccc;
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 16px;
+  margin: 16px 0;
+}
+.container-card::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+@media (max-width: 500px) {
+  .container-card {
+    text-align: center;
+  }
+}

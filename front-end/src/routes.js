@@ -5,6 +5,7 @@ import { CreatePage } from "./pages/CreatePage";
 import { DetailPage } from "./pages/DetailPage";
 import { AuthPage } from "./pages/AuthPage";
 
+
 export const RoutesUse = (isAuthenticate) => {
   if (isAuthenticate) {
     return (
@@ -20,6 +21,7 @@ export const RoutesUse = (isAuthenticate) => {
           <DetailPage />
         </Route>
         <Redirect to="/create" />
+
       </Switch>
     );
   }

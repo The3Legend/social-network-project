@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState, useEffect } from "react";
 import { useHttp } from "../hooks/http.hook";
 import { AuthContext } from "../context/AuthContext";
-import { UserPosts } from "./UserPosts";
+import { UserProfile } from "../components/UserProfile";
 
 
 export const LinksPage = () => {
@@ -21,5 +21,5 @@ export const LinksPage = () => {
   useEffect(() => {
     AllPost();
   }, [AllPost]);
-  return <>{!loading && post && <UserPosts post={post} />}</>;
+  return <>{!loading && post && <UserProfile post={post} />}</>;
 };

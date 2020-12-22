@@ -1,7 +1,7 @@
 import React, { useCallback, useContext, useState, useEffect } from "react";
 import { useHttp } from "../hooks/http.hook";
 import { AuthContext } from "../context/AuthContext";
-import { UserPosts } from "./UserPosts";
+import { UserPosts } from "../components/UserPosts";
 
 export const DetailPage = () => {
   const auth = useContext(AuthContext);
@@ -13,6 +13,7 @@ export const DetailPage = () => {
       const UserPosts = await request(`/api/post/`, "GET", null, {
         Authorization: auth.token,
       });
+      console.log(UserPosts)
       getPost(UserPosts);
     } catch (e) {}
   }, [auth.token, request]);
