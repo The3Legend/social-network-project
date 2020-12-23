@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index",
     "server": "nodemon index",
-    "client": "cd ..&& cd front-end && npm start"
+    "client": " cd front-end && npm start"
   },
   "keywords": [
     "express",
