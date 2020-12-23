@@ -5,13 +5,13 @@ export const UserPosts = ({ post }) => {
     return (
       <div>
         <div className="container ">
-          <div className="card container-card" key={el._id}>
+          <div className="card" key={el._id}>
             <div className="card-body">
-              <div className="d-flex justify-content-end buttons">
+              <div className="d-flex justify-content-end">
                 <button type="button" className="btn btn-primary width">
-                  <i className="fa fa-pencil" aria-hidden="true"></i>
+                  <i className="buttons fa fa-pencil " aria-hidden="true"></i>
                 </button>
-                <button type="button" className="btn btn-primary width">
+                <button type="button" className="btn btn-primary width ">
                   <i className="fa fa-trash" aria-hidden="true"></i>
                 </button>
               </div>
@@ -19,7 +19,7 @@ export const UserPosts = ({ post }) => {
               <p className="card-text">{el.text}</p>
               <div className='d-flex justify-content-between'>
                 <p>{el.date}</p>
-                <button type="button" className="btn btn-danger width">
+                <button type="button" className="btn btn-danger width ">
                   <i className="fa fa-heart" aria-hidden="true"></i>
                 </button>
               </div>

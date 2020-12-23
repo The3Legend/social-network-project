@@ -50,14 +50,14 @@ export const AuthPage = () => {
       >
         <div className="container">
           <div className="row ">
-            <div className="col-7 ">
+            <div className="col-sm-7 ">
               <h2>
                 Welcome to 'The Blog' page, later the site will be updated with
                 new functionality, thank you for now, log in and enjoy your
                 conversation!
               </h2>
             </div>
-            <div className="col-5 ">
+            <div className="col-sm-5 ">
               <div className="card opacity">
                 <article className="card-body">
                   <h4 className="card-title text-center mb-5 mt-1">
