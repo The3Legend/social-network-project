@@ -3,7 +3,7 @@ import AcountDetail from "./AcountDetail";
 export const UserProfile = ({ post }) => {
   const AllPost = post.map((el) => {
     return (
-      <div className="card" key={el._id}>
+      <div className="card container-card" key={el._id}>
         <div className="card-body">
           <div className="d-flex justify-content-end buttons">
             <button type="button" className="btn btn-primary width">

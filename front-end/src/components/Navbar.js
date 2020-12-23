@@ -13,7 +13,7 @@ export const Navbar = () => {
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between">
       <a className="navbar-brand" href="/detail">
-      <i class="fa fa-home" aria-hidden="true"> The Brand</i>
+      <i className="fa fa-home" aria-hidden="true"> The Brand</i>
       </a>
 
       <ul className="navbar-nav">

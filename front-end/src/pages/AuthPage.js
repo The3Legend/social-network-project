@@ -42,82 +42,97 @@ export const AuthPage = () => {
   };
 
   return (
-    <div className='container'>
-      <div className="row mt-4">
-        <div className="col-4 mx-auto">
-          <div className="card">
-            <article className="card-body">
-              <h4 className="card-title text-center mb-4 mt-1">
-                Login/Registration
-              </h4>
-              <div className="form-group">
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fa fa-user"></i>
-                    </span>
+    <div className="color center">
+      <h1>The Blog</h1>
+      <div
+        className="d-flex flex-wrap align-content-center "
+        style={{ height: "600px" }}
+      >
+        <div className="container">
+          <div className="row ">
+            <div className="col-7 ">
+              <h2>
+                Welcome to 'The Blog' page, later the site will be updated with
+                new functionality, thank you for now, log in and enjoy your
+                conversation!
+              </h2>
+            </div>
+            <div className="col-5 ">
+              <div className="card opacity">
+                <article className="card-body">
+                  <h4 className="card-title text-center mb-5 mt-1">
+                    Login/Registration
+                  </h4>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="fa fa-user"></i>
+                        </span>
+                      </div>
+                      <input
+                        className="form-control"
+                        placeholder="Name"
+                        type="text"
+                        id="nickName"
+                        name="nickName"
+                        onChange={changeHandler}
+                      />
+                    </div>
                   </div>
-                  <input
-                    className="form-control"
-                    placeholder="Name"
-                    type="text"
-                    id="nickName"
-                    name="nickName"
-                    onChange={changeHandler}
-                  />
-                </div>
-              </div>
-              <div className="form-group">
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fa fa-envelope"></i>
-                    </span>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="fa fa-envelope"></i>
+                        </span>
+                      </div>
+                      <input
+                        className="form-control"
+                        placeholder="Email"
+                        type="email"
+                        name="email"
+                        id="email"
+                        onChange={changeHandler}
+                      />
+                    </div>
                   </div>
-                  <input
-                    className="form-control"
-                    placeholder="Email"
-                    type="email"
-                    name="email"
-                    id="email"
-                    onChange={changeHandler}
-                  />
-                </div>
-              </div>
-              <div className="form-group">
-                <div className="input-group">
-                  <div className="input-group-prepend">
-                    <span className="input-group-text">
-                      <i className="fa fa-lock"></i>
-                    </span>
+                  <div className="form-group">
+                    <div className="input-group">
+                      <div className="input-group-prepend">
+                        <span className="input-group-text">
+                          <i className="fa fa-lock"></i>
+                        </span>
+                      </div>
+                      <input
+                        className="form-control"
+                        placeholder="Password"
+                        type="password"
+                        name="password"
+                        id="password"
+                        onChange={changeHandler}
+                      />
+                    </div>
                   </div>
-                  <input
-                    className="form-control"
-                    placeholder="Password"
-                    type="password"
-                    name="password"
-                    id="password"
-                    onChange={changeHandler}
-                  />
-                </div>
+                  <div className="form-group d-flex justify-content-between">
+                    <button
+                      className="btn btn-outline-success"
+                      onClick={loginHandler}
+                      disabled={loading}
+                    >
+                      Login
+                    </button>
+                    <button
+                      className="btn btn-outline-primary"
+                      onClick={registerHandler}
+                      disabled={loading}
+                    >
+                      Register
+                    </button>
+                  </div>
+                </article>
               </div>
-              <div className="form-group d-flex justify-content-between">
-                <button
-                  className="btn btn-outline-success"
-                  onClick={loginHandler}
-                  disabled={loading}
-                >
-                  Login
-                </button>
-                <button
-                  className="btn btn-outline-primary"
-                  onClick={registerHandler}
-                  disabled={loading}
-                >
-                  Register
-                </button>
-              </div>
-            </article>
+            </div>
           </div>
         </div>
       </div>

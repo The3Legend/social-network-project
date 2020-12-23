@@ -32,23 +32,23 @@ export const CreatePage = () => {
   };
 
   return (
-    <div>
-      <div class="container">
+    <div className='formSize'>
+      <div className="container">
         <h2>Please create a posts</h2>
         <p>The form below contains a textarea for posts:</p>
-        <div class="form-group">
-          <label for="comment">Posts:</label>
+        <div className="form-group">
+          <label htmlFor="comment">Posts:</label>
           <textarea
-            class="form-control"
+            className="form-control"
             rows="5"
             type="text"
             name="text"
             id="text"
-            placeholder="введіть текст..."
+            placeholder="Enter text..."
             onChange={changeHandler}
           ></textarea>
         </div>
-        <button onClick={postHandler} class="btn btn-primary">
+        <button onClick={postHandler} className="btn btn-primary">
           Add Comment
         </button>
       </div>

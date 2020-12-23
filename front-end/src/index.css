@@ -31,7 +31,7 @@ button {
 }
 .container-card {
   border: 2px solid #ccc;
-  background-color: #eee;
+
   border-radius: 5px;
   padding: 16px;
   margin: 16px 0;
@@ -45,4 +45,39 @@ button {
   .container-card {
     text-align: center;
   }
+}
+.card-style {
+  border: 2px solid #ccc;
+}
+/* .color {
+  background: radial-gradient(at top, #feffff, #a7cecc);
+} */
+.formSize {
+  width: 100vw;
+  height: 95vh;
+}
+.color {
+  background: linear-gradient(45deg, #2980b9, #6dd5fa, #ffffff);
+  background-size: 400% 400%;
+  animation: gradient 10s ease infinite;
+  font-family: "Noto Sans JP", sans-serif;
+  height: 100vh;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+.center {
+  text-align: center;
+}
+.opacity {
+  opacity: 0.8;
 }

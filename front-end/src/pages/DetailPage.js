@@ -21,5 +21,5 @@ export const DetailPage = () => {
   useEffect(() => {
     AllPost();
   }, [AllPost]);
-  return <>{!loading && post && <UserPosts post={post} />}</>;
+  return <>{!loading && post && <UserPosts post={post}/>}</>;
 };
