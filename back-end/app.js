@@ -11,7 +11,7 @@ const postRouters = require("./routes/post");
 const authRoutes = require("./routes/auth");
 const app = express();
 
-//Рейеструємо роут з папки routes
+//Реєструємо роут з папки routes
 app.use(express.json({extended:true}))
 mongoose
   .connect(keys.mongoURI, {
@@ -37,4 +37,4 @@ app.use("/api/auth", authRoutes);
 // є строка "/api/auth" вона буде зєднуватись з login з файлу ./routes/auth
 
 module.exports = app;
-//Експортуем даний модуль
+//Експортуемо даний модуль
