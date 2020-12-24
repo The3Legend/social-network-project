@@ -1,9 +1,10 @@
 import React from "react";
+import Moment from "react-moment";
 import AcountDetail from "../AcountDetail/AcountDetail";
 export const MyPost = ({ post }) => {
   //отримуємо інформацію про користувача,витягуємо id,nickName,
   const AllPost = post.map((el) => {
-    const { _id, nickName, date } = el;
+    const { _id, nickName, date, text } = el;
     return (
       <div className="card container-card" key={_id}>
         <div className="card-body">
@@ -19,9 +20,11 @@ export const MyPost = ({ post }) => {
             </button>
           </div>
           <h6 className="card-title">User: {nickName}</h6>
-          <p className="card-text">{el.text}</p>
+          <p className="card-text">{text}</p>
           <div className="d-flex justify-content-between">
-            <p>{date}</p>
+            <small>
+              <Moment format="HH:mm DD-MM-YYYY">{date}</Moment>
+            </small>
             <button type="button" className="btn btn-danger width ">
               <i className="fa fa-heart" aria-hidden="true"></i>
             </button>
