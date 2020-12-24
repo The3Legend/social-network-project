@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+//Створення моделі
 let userSchema = mongoose.Schema({
   email: {
     type: String,

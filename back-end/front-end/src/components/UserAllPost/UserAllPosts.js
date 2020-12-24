@@ -1,6 +1,7 @@
 import React from "react";
-
-export const UserPosts = ({ post }) => {
+//Компонента для відображення всіх постів з сторінки AllPost
+export const UserAllPosts = ({ post }) => {
+  //Отримуємо пости
   const AllPost = post.map((el) => {
     return (
       <div>

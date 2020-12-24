@@ -1,11 +1,11 @@
-//2
 const express = require("express");
+//Підключаємо експресс
 const { check } = require("express-validator");
-// Підключаем express
+//Провірка на валідність
 const router = express.Router();
-// Спеціальна сущність яка знаходиться в express це Router  це конструктор
+// сущність яка знаходиться в express це Router  це конструктор
 const controller = require("../controllers/auth");
-//Підключаем контроллер це розбивка 2 частини функції,її можна було записати і тут
+//Підключаємо контроллер це розбивка 2 частини функції,її можна було записати і тут
 router.post(
   "/login",
   [
@@ -14,7 +14,7 @@ router.post(
   ],
   controller.login
 );
-// Після обєднання ми получимо Localhost:5000//api/auth/login
+// Після обєднання ми отримаємо Localhost:5000//api/auth/login
 router.post(
   "/register",
   [
@@ -25,7 +25,7 @@ router.post(
   ],
   controller.register
 );
-// Після обєднання ми получимо Localhost:5000//api/auth/register
+// Після обєднання ми отримаємо Localhost:5000//api/auth/register
 
 module.exports = router;
 //експортуємо його

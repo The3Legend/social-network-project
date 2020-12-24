@@ -1,8 +1,8 @@
 import React, { useContext, useState } from "react";
-import { useHttp } from "../hooks/http.hook";
-import { AuthContext } from "../context/AuthContext";
+import { useHttp } from "../../hooks/http.hook";
+import { AuthContext } from "../../context/AuthContext";
 import { useHistory } from "react-router-dom";
-export const CreatePage = () => {
+export const CreatePost = () => {
   const auth = useContext(AuthContext);
   const history = useHistory();
   const { request } = useHttp();
@@ -15,10 +15,11 @@ export const CreatePage = () => {
   const changeHandler = (event) => {
     setPostForm({ ...postForm, [event.target.name]: event.target.value });
   };
+  //За допомогою хука забираєм всі дані
 
-  const postHandler = async () => {
+  const createPost = async () => {
     try {
-      const data = await request(
+      await request(
         "/api/post",
         "POST",
         { ...postForm },
@@ -26,13 +27,13 @@ export const CreatePage = () => {
           Authorization: auth.token,
         }
       );
-      console.log(data);
-      history.push("/detail");
+      history.push("/allPost");
     } catch (e) {}
   };
+  //закидуємо в базу даних інформацію про пост
 
   return (
-    <div className='formSize'>
+    <div className="formSize">
       <div className="container">
         <h2>Please create a posts</h2>
         <p>The form below contains a textarea for posts:</p>
@@ -48,7 +49,7 @@ export const CreatePage = () => {
             onChange={changeHandler}
           ></textarea>
         </div>
-        <button onClick={postHandler} className="btn btn-primary">
+        <button onClick={createPost} className="btn btn-primary">
           Add Comment
         </button>
       </div>

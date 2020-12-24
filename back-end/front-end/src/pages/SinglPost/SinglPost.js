@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useState, useEffect } from "react";
-import { useHttp } from "../hooks/http.hook";
-import { AuthContext } from "../context/AuthContext";
-import { UserProfile } from "../components/UserProfile";
+import { useHttp } from "../../hooks/http.hook";
+import { AuthContext } from "../../context/AuthContext";
+import { MyPost } from "../../components/MyPost/MyPost";
 
 
-export const LinksPage = () => {
+export const SinglPost = () => {
   const auth = useContext(AuthContext);
   const { request, loading } = useHttp();
   const [post, getPost] = useState(null);
@@ -17,9 +17,11 @@ export const LinksPage = () => {
       getPost(UserPosts);
     } catch (e) {}
   }, [auth.token, request]);
-
+//Отримання одного поста
   useEffect(() => {
     AllPost();
   }, [AllPost]);
-  return <>{!loading && post && <UserProfile post={post} />}</>;
+  return <>{!loading && post && <MyPost post={post} />}</>;
+  // Створення компоненти,і передаємо потрібну інформацію про пости
+
 };

@@ -5,6 +5,7 @@ const errorHendler = require("../utils/errorHendler");
 module.exports.getAll = async function (req, res) {
   try {
     let posts = await Post.find();
+    //Шукаємо всі пости користувачів
     res.json(posts);
   } catch (e) {
     errorHendler(res, e);
@@ -13,6 +14,7 @@ module.exports.getAll = async function (req, res) {
 module.exports.singlPost = async function (req, res) {
   try {
     let posts = await Post.find({ user: req.user.id });
+    //Шукаємо пости окремого користувача по id
     res.json(posts);
   } catch (e) {
     errorHendler(res, e);
@@ -29,6 +31,7 @@ module.exports.create = async function (req, res) {
       nickName: user.nickName,
       email:user.email
     }).save();
+    //Створення поста з id залогіненого користувача
     res.status(201).json(newPost);
   } catch (e) {
     errorHendler(res, e);
@@ -38,8 +41,9 @@ module.exports.delete = async function (req, res) {
   try {
     await Post.remove({ _id: req.params.id });
     res.status(200).json({
-      massage: "Позиція була видалена",
+      massage: "The position has been deleted",
     });
+    //видалення поста по id поста
   } catch (e) {
     errorHendler(res, e);
   }
@@ -51,6 +55,7 @@ module.exports.update = async function (req, res) {
       { $set: req.body },
       { new: true }
     );
+    //Функція зміни поста користувача
     res.status(200).json(udatePost);
   } catch (e) {
     errorHendler(res, e);
@@ -68,7 +73,7 @@ module.exports.comment = async function (req, res) {
     };
     post.comments.push(newComment);
     await post.save();
-
+//Шукаємо id поста і id користувача,на основі цього створюємо комент до окремого поста
     res.json(post);
   } catch (e) {
     errorHendler(res, e);
@@ -83,7 +88,7 @@ module.exports.deleteComent = async function (req, res) {
     );
     post.comments = removeCommentFromComments;
     await post.save();
-
+//видалення комента
     res.json(post);
   } catch (e) {
     errorHendler(res, e);

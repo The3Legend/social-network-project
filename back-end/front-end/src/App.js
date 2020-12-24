@@ -3,7 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { RoutesUse } from "./routes";
 import { useAuth } from "./hooks/auth.hook";
 import { AuthContext } from "./context/AuthContext";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/Navbar/Navbar";
 
 function App() {
   const { token, login, logout, userId } = useAuth();
@@ -22,7 +22,7 @@ function App() {
     >
       <Router>
         {isAuthenticated && <Navbar/> }
-        <div className=''>{routes}</div>
+        <div className='background'>{routes}</div>
       </Router>
     </AuthContext.Provider>
   );

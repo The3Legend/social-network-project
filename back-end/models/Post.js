@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+//Створення моделі(схеми)
 let postSchema = mongoose.Schema({
   text: {
     type: String,

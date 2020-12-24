@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useHttp } from "../hooks/http.hook";
-import { useMassage } from "../hooks/massage.hook";
-import { AuthContext } from "../context/AuthContext";
+import { useHttp } from "../../hooks/http.hook";
+import { useMassage } from "../../hooks/massage.hook";
+import { AuthContext } from "../../context/AuthContext";
 import toast from "toastr";
 
 export const AuthPage = () => {
@@ -13,6 +13,7 @@ export const AuthPage = () => {
     password: "",
     nickName: "",
   });
+  //Встановлення зависимостей
 
   useEffect(() => {
     message(error);
@@ -22,7 +23,9 @@ export const AuthPage = () => {
   const changeHandler = (event) => {
     setForm({ ...form, [event.target.name]: event.target.value });
   };
-  const registerHandler = async () => {
+
+  //За допомогою хука збираєм з інпутів всі дані
+  const createRegister = async () => {
     try {
       const data = await request("/api/auth/register", "POST", { ...form });
       toast.options.positionClass = "toast-top-right";
@@ -30,7 +33,8 @@ export const AuthPage = () => {
       toast.success(data.message);
     } catch (e) {}
   };
-  const loginHandler = async () => {
+  //за допомогою запроса регістрації зкидуєм всі дані в модель бази даних
+  const createLogin = async () => {
     try {
       const data = await request("/api/auth/login", "POST", { ...form });
       auth.login(data.token, data.userId);
@@ -40,7 +44,7 @@ export const AuthPage = () => {
       toast.success(data.message);
     } catch (e) {}
   };
-
+  //за допомогою запроса логіну зкидуєм всі дані в модель бази даних
   return (
     <div className="color center">
       <h1>The Blog</h1>
@@ -76,6 +80,7 @@ export const AuthPage = () => {
                         type="text"
                         id="nickName"
                         name="nickName"
+                        value={form.nickName}
                         onChange={changeHandler}
                       />
                     </div>
@@ -93,6 +98,7 @@ export const AuthPage = () => {
                         type="email"
                         name="email"
                         id="email"
+                        value={form.email}
                         onChange={changeHandler}
                       />
                     </div>
@@ -110,6 +116,7 @@ export const AuthPage = () => {
                         type="password"
                         name="password"
                         id="password"
+                        value={form.password}
                         onChange={changeHandler}
                       />
                     </div>
@@ -117,14 +124,14 @@ export const AuthPage = () => {
                   <div className="form-group d-flex justify-content-between">
                     <button
                       className="btn btn-outline-success"
-                      onClick={loginHandler}
+                      onClick={createLogin}
                       disabled={loading}
                     >
                       Login
                     </button>
                     <button
                       className="btn btn-outline-primary"
-                      onClick={registerHandler}
+                      onClick={createRegister}
                       disabled={loading}
                     >
                       Register

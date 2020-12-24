@@ -1,9 +1,12 @@
-//Створення сервера 1
+
 const express = require("express");
-const mongoose = require("mongoose");
-const passport = require("passport");
 // Підключення модуля express
+const mongoose = require("mongoose");
+//Підключення монгус
+const passport = require("passport");
+//Підключення паспорт
 const bodyParser = require("body-parser");
+//body-parser витягує всю частину тіла вхідного потоку запитів і надає його на req.body
 const cors = require("cors");
 const morgan = require("morgan");
 const keys = require("./config/keys");
@@ -19,11 +22,13 @@ mongoose
     useUnifiedTopology: true,
     useCreateIndex: true,
   })
+  //Підключення до бази даних монго
   .then(() => console.log("MongoDB conected"))
   .catch((e) => console.log(e));
 
 app.use(passport.initialize());
 require("./middleware/passport")(passport);
+//Підключаєм пасспорт
 
 app.use(morgan("dev"));
 app.use(cors());
@@ -37,4 +42,4 @@ app.use("/api/auth", authRoutes);
 // є строка "/api/auth" вона буде зєднуватись з login з файлу ./routes/auth
 
 module.exports = app;
-//Експортуемо даний модуль
+

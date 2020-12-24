@@ -4,3 +4,4 @@ module.exports = (res, error) => {
     message: error.message ? error.message : error,
   });
 };
+//Універсальна обробка помилки

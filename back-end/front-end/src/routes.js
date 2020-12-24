@@ -1,9 +1,9 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
-import { LinksPage } from "./pages/LinksPage";
-import { CreatePage } from "./pages/CreatePage";
-import { DetailPage } from "./pages/DetailPage";
-import { AuthPage } from "./pages/AuthPage";
+import { SinglPost} from "./pages/SinglPost/SinglPost";
+import { CreatePost } from "./pages/CreatePost/CreatePost";
+import { AllPosts } from "./pages/AllPosts/AllPosts";
+import { AuthPage } from "./pages/AuthPages/AuthPage";
 
 
 export const RoutesUse = (isAuthenticate) => {
@@ -11,16 +11,16 @@ export const RoutesUse = (isAuthenticate) => {
     return (
       //якщо користувач залогінений і у нього є токен
       <Switch>
-        <Route path="/links" exact>
-          <LinksPage />
+        <Route path="/singlPost" exact>
+          <SinglPost />
         </Route>
-        <Route path="/create" exact>
-          <CreatePage />
+        <Route path="/createPost" exact>
+          <CreatePost />
         </Route>
-        <Route path="/detail">
-          <DetailPage/>
+        <Route path="/allPost">
+          <AllPosts />
         </Route>
-        <Redirect to="/create" />
+        <Redirect to="/createPost" />
 
       </Switch>
     );

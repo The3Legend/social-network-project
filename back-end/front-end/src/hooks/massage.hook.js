@@ -11,3 +11,5 @@ export const useMassage = () => {
     }
   }, []);
 };
+
+// Оброблюємо помилку за допомогою toastr

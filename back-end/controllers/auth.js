@@ -1,7 +1,10 @@
 //3
 const bcrypt = require("bcryptjs");
+// Шифрування пароля
 const { validationResult } = require("express-validator");
+//Провірка на валідність
 const jwt = require("jsonwebtoken");
+//Створення токену
 const keys = require("../config/keys");
 const User = require("../models/User");
 const errorHendler = require("../utils/errorHendler");
@@ -11,40 +14,43 @@ module.exports.login = async function (req, res) {
   if (!errors.isEmpty()) {
     return res.status(400).json({
       errors: errors.array(),
-      message: "Некоректні дані для реєстрації",
+      message: "Incorrect data for registration",
     });
   }
+  //Провірка на валідацію
   const { email, password } = req.body;
   const candidate = await User.findOne({ email: email });
   if (candidate) {
-    // Проверка пароля,пользователь существует
+    // Провірка пороля,користувач існує
     const passwordRezult = bcrypt.compareSync(password, candidate.password);
     if (passwordRezult) {
-      // МИ МАЄМО згенерувати токен,пароли совпали
+      // ми маємо згенерувати токен,паролі співпали
       const token = jwt.sign(
         {
           email: candidate.email,
           userId: candidate._id,
           nickName: candidate.nickName,
         },
+        //присвоюємо токену email,userId,nickName
         keys.jwt,
         { expiresIn: 60 * 60 }
       );
+      // час існування токену
       res.status(200).json({
         token: `Bearer ${token}`,
         userId:`User ${candidate.id}`,
-        message: "Ви успішно увійшли в систему",
+        message: "You are successfully logged in",
       });
     } else {
       // Пароли не совпали
       res.status(401).json({
-        message: "Пароли не совпадают,попробуйте снова",
+        message: "Passwords do not match, please try again",
       });
     }
   } else {
-    // Пользователя нет,Ошибка
+    // Користувача нема,Ошибка
     res.status(404).json({
-      message: "Пользователь с таким імейл не найдень",
+      message: "User with this email cannot be found",
     });
   }
 };
@@ -55,7 +61,7 @@ module.exports.register = async function (req, res) {
   if (!errors.isEmpty()) {
     return res.status(400).json({
       errors: errors.array(),
-      message: "Некоректні дані для реєстрації",
+      message: "Incorrect data for registration",
     });
   }
   const { email, nickName, password } = req.body;
@@ -64,17 +70,18 @@ module.exports.register = async function (req, res) {
     nickName: nickName,
   });
   if (inaccessibleUserName)
+  //Якщо користувач з таким nickName існує,ошибка
     return res
       .status(409)
-      .json({ message: "Ваш nickName уже занят попробуйте другой" });
+      .json({ message: "Your nickName is already taken, try another one" });
 
   if (candidate) {
-    // Пользователь существує треба вернути ошибку
+    //Користувач з таким імейл існує
     res.status(409).json({
-      message: "Такой имейл уже занят.Попробуйте другой",
+      message: "This email is already taken, please try another",
     });
   } else {
-    // Створюємо пользователя
+    //Якщо все ок,створюємо користувача
     const salt = bcrypt.genSaltSync(10);
     const user = new User({
       email: email,
@@ -84,9 +91,9 @@ module.exports.register = async function (req, res) {
 
     try {
       await user.save();
-      res.status(201).json({ message: "Пользователь создан", user });
+      res.status(201).json({ message: "User created!", user });
     } catch (e) {
-      // Обработать ошибку
+      //Ошибка
       errorHendler(res, e);
     }
   }

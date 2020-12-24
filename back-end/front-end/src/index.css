@@ -54,9 +54,7 @@ button {
 .card-style {
   border: 2px solid #ccc;
 }
-/* .color {
-  background: radial-gradient(at top, #feffff, #a7cecc);
-} */
+
 .formSize {
   width: 100vw;
   height: 95vh;
@@ -82,4 +80,8 @@ button {
 }
 .opacity {
   opacity: 0.9;
+}
+.background {
+  background: linear-gradient(45deg, #2980b9, #6dd5fa, #ffffff);
+  height: 95vh;
 }
